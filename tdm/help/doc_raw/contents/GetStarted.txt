@@ -74,89 +74,93 @@ const Element = ({ widget, linkPath }: any) => {
 
         <H2 registry={registry}>How to use</H2>
 
-        <P>
-            In this section we will introduce how to use TDM in daily operation and development. It only scratches the
-            surface of this software. For detailed information, please refer to the corresponding topic in this documentation.
-        </P>
-
-        <H3 registry={registry}>Create and modify a profile</H3>
+        <H3 registry={registry}>Create and edit a profile</H3>
 
         <P>
-            Once started, there is a profile Get Started. It is a profile that has minimum configuration
-            for the user to further config. You can play with this profile, or click the <code>+</code> button
-            on the right to add a new profile.
+            After launching TDM, you can create a new Profile by clicking the <code>+</code> button.
+            To view or edit this Profile, click the 3-dot button in the top-right corner of the profile block.
         </P>
+
         <P>
-            You can edit the profile by clicking the 3-dot sign on top-right corner of the
-            profile block and choose <code>Edit</code>, as shown below:
+            In the Profile editor, you can rename the Profile by editing the text box in the top-left corner
+            (remember to hit enter to confirm the change).
+            TDM provides a set of pre-defined categories and entries required for operation.
+            One of the most important settings is the <code>EPICS_CA_ADDR_LIST</code> entry,
+            found under the <code>EPICS CA Settings</code> category. This environment variable can be defined in three places:
+            the Channel Access client default, the operating system environment, and within TDM itself.
+            In TDM, the value you set will override the others. As shown in the figure below,
+            you can easily add, delete, or modify the hosts in the <code>EPICS_CA_ADDR_LIST</code> entry for your Profile.
         </P>
 
         <IMG src={"resources/help/getStarted-01.gif"}></IMG>
 
-        <P>
-            In the editing page,
-            the <code>EPICS Environment</code> category includes the EPICS-related configurations.
-            You can add, delete, and modify the configurations defined
-            in <LINK link={"https://epics.anl.gov/EpicsDocumentation/AppDevManuals/ChannelAccess/cadoc_4.htm"}>EPICS Environment Variables</LINK>.
-            For example, the below figure shows how to add new server to <code>EPICS_CA_ADDR_LIST</code>,
-            and add/modify the <code>EPICS_CA_CONN_TMO</code>.
-        </P>
-
-        <IMG src={"resources/help/getStarted-02.gif"}></IMG>
+        <H3 registry={registry}>Create your first display</H3>
 
         <P>
-            Another commonly used profile category is the <code>EPICS Custom Environment</code>. It includes
-            the TDM related information for operation. For example, the <code>Default TDL Files</code> is
-            a list of file names. These files are automatically opened when this profile is selected.
-            The <code>Default Search Paths</code> defines the search paths for the TDL files. <code>Default Mode</code> is
-            could be either <code>operating</code> or <code>editing</code>. The default TDL files
-            will be in these modes when they are first opened. There are more such configurations.
-        </P>
-        <H3 registry={registry}>Create your display</H3>
-
-        <P>
-            After the profile is set up, we can run the TDM that is configured as this profile.
-            There is no TDL file opened for this profile. Below is what you will see
-            after choosing the <code>Get Started</code> profile.
+            After the Profile is configured, we can run the TDM under this profile by clicking the profile block.
         </P>
 
         <IMG src={"resources/help/getStarted-03.png"}></IMG>
 
+
         <P>
-            This screen is called main window. It is the management window for the current TDM instance.
-            There are more than a dozen buttons in this window. You can click the <code>Create new display</code> button
-            to create a new display.
+            The window displayed here is the TDM Main Window, which serves as the central hub for managing your TDM instance.
+            All window management features and tools are accessible directly through clearly labeled
+            buttons—there are no dropdown menus or hidden options.
+            This streamlined design ensures that all available functions are easy to find and operate,
+            making navigation straightforward for users of any experience level.
         </P>
 
         <P>
-            The new window shows an empty area called Canvas on the left and a narrower area, called
-            sidebar, on the right. The Canvas is the background of the display, the sidebar has
-            all the options for the display, including for Canvas and widgets.
+            You can create a new display by clicking the <code>Create new display</code> button.
         </P>
 
         <P>
-            It is straightforward to set up the Canvas. The width and  height can be set manually
-            in the input boxes. They can also be set by resizing the window. The macros table
-            has 2 columns: one for the macro name (without the <code>${ }</code> or <code>$()</code> sign),
-            one for the value.
+            There are 2 modes for a Display Window: editing mode and operating mode.
+            In editing mode, you can create and modify the widgets on the display;
+            in operate mode, the widgets are running and updating the values.
+            A newly created display window is initially in editing mode, as shown below:
+        </P>
+
+        <IMG src={"resources/help/empty-display-window-editing.png"}></IMG>
+
+        <P>
+            The empty area on the left is called Canvas, the narrower area on the right is called
+            sidebar. The Canvas is the background of the display, we can create widgets on it. The sidebar contains
+            all the options for the window, Canvas and widgets.
         </P>
 
         <P>
-            Next, let us create two widgets that monitor and control a PV.
-            In TDM, all the operations are handled in right click context menu.
-            To create the monitor widget, we right click on Canvas, choose <code>Create Monitor Widget</code> and
-            <code>Text Update</code>. The mouse cursor becomes cross-hair shape. Then hold down the
-            left mouse button to draw an area, then release the button.
-            We can use a similar way to create a <code>Text Entry</code> widget to control the PV.
-            On the sidebar of each widget, we can set the PV name to monitor or control.
+            All the operations on the display window are integrated in the right click context menu.
+            This includes creating, editing, and deleting widgets, as well as configuring the display settings.
+            To create a widget, right click on the Canvas and choose the widget from
+            one of the categories: <code>Create Static Widget</code>, <code>Create Monitor Widget</code>,
+            <code>Create Control Widget</code>, and <code>Create Complex Widget</code>.
         </P>
 
         <P>
-            We are still in <code>Editing</code> mode, we can run the display window by
-            right click and choose <code>Execute Display</code>. After that,
-            the display window switched to <code>Operating</code> mode, the sidebar
-            disappears, and the values start to update. We can change the PV value by
-            typing in the <code>Text Entry</code> and press <code>Enter</code> key.
+            One of the most commonly used widgets in a display manager is the <code>Text Update</code>.
+            This widget monitors a PV (Process Variable) and displays its value in a rectangular block.
+            To create a <code>Text Update</code> widget, right-click on the Canvas, select <code>Create Monitor Widget</code>, and
+            then choose <code>Text Update</code>.
+            The mouse cursor will change to a crosshair.
+            Hold down the left mouse button to draw the desired area, then release it to place the widget.
+            To configure the widget, click on the widget to
+            open its sidebar.
+            In the <code>Channel</code> input box of <code>Text Update</code> sidebar,
+            after entering the PV name (e.g. <code>val7</code>), press the <b><code>Enter</code></b> key to confirm your input.
+            This is a consistent requirement for all input boxes in TDM, ensuring that your
+            changes are properly registered and applied throughout the application.
+            You can further customize the widget by adjusting its position, size, alarm settings, text properties, background color, and more.
+            Advanced features such as <code>Rules</code>for dynamic appearance changes will be introduced later.
+        </P>
+
+        <P>
+            We are still in the <b><code>Editing</code></b> mode. To run the display window,
+            right-click on the Canvas and select <code>Execute Display</code>.
+            After that, the display window switches to <b><code>Operating</code></b> mode,
+            where the sidebar disappears and the values start to update (assuming you already have an EPICS IOC running with
+            this PV).
         </P>
 
         <P>
@@ -166,62 +170,99 @@ const Element = ({ widget, linkPath }: any) => {
         <IMG src={"resources/help/getStarted-04.gif"}></IMG>
 
         <P>
-            We can always switch back to the <code>Editing</code> mode by right
+            The display can be switched back to the <code>Editing</code> mode by right
             clicking the Canvas and select <code>Edit Display</code>.
         </P>
 
-        <H3 registry={registry}>Operate</H3>
-
         <P>
-            In <code>Operating</code> mode, the control and monitor of the PVs are
-            intuitive. As mentioned above, (almost) all the operations on the display window
-            are integrated in the right click context menu. One exception is you can
-            mid-click the widget to peek and copy the PV name.
+            To control the PVs, we can use the <code>Control</code> widgets. The simplest and most commonly used control widget is the <code>Text Entry</code>.
+            The creation of a <code>Text Entry</code> widget is similar to that of the <code>Text Update</code> widget.
+            Right-click on the Canvas, select <code>Create Control Widget</code>, and then choose <code>Text Entry</code>.
+            After the mouse cursor changes to a crosshair, Hold down the left mouse button to draw the desired area, then release it to place the widget.
+            In the sidebar of the <code>Text Entry</code> widget, enter the PV name (e.g. <code>val7</code>) to be controlled
+            in the <code>Channel</code> input box and press <b><code>Enter</code></b> to confirm.
         </P>
 
-        <H3 registry={registry}>Various widgets</H3>
         <P>
-            TDM has more than 30 types of widgets. They provide rich features for visualzing and
-            controlling the EPICS data in different forms. They are categorized into 4 types:
+            Once the <code>Text Entry</code> widget is created, switch the display window to <code>Operating</code> mode
+            by right-clicking the Canvas and selecting <code>Execute Display</code> from the context menu.
+            The sidebar will disappear, and the <code>Text Entry</code> widget will now display the current PV value.
+            To change the PV, simply enter a new value in the widget and press <b><code>Enter</code></b>.
+            The value will be sent to the EPICS IOC, and the PV will be updated in real time.
         </P>
+
+        <P>
+            The above operations are shown below:
+        </P>
+
+        <IMG src={"resources/help/getStarted-02.gif"}></IMG>
+
+        <H2 registry={registry}>Widgets</H2>
+
+        <P>
+            TDM offers over 30 types of widgets, providing a comprehensive set of features for visualizing and controlling
+            EPICS data in various formats.
+            These widgets are organized into four categories:
+        </P>
+
 
         <ul>
             <li>
                 <P>
-                    Static widgets. They are for static objects, like <LINK widget={widget} to={"/Label"}>Label</LINK> shows
-                    a static text or a LaTeX format formula;
-                    the <LINK widget={widget} to={"/Media"}>Media</LINK> widget can display picture, pdf file, or local/remote video files.
+                    Static widgets. These widgets are used for displaying static content such as shapes, images, or fixed text.
+                    They do not update automatically with EPICS PV changes and are ideal for adding labels, annotations, or decorative elements to the display.
+                    For example, the <LINK widget={widget} to={"/StaticWidgets/Label"}>Label</LINK> widget can show static text or LaTeX-formatted formulas,
+                    while the <LINK widget={widget} to={"/StaticWidgets/Media"}>Media</LINK> widget supports displaying images, PDF files, and local or remote video files.
                 </P>
             </li>
             <li>
                 <P>
-                    Monitor widgets. They display the PV values for an EPICS or Local channel.
-                    For example, <LINK widget={widget} to={"/TextUpdate"}>Text Update</LINK> simply shows the value in a
-                    rectangle block; <LINK widget={widget} to={"/Tank"}>Tank</LINK> shows the data in form of a water
-                    tank; <LINK widget={widget} to={"/LED"}>LED</LINK> is a convenient tool to inspect the
-                    bit values in the PV.
-                </P>
-
-            </li>
-            <li>
-                <P>
-                    Control widgets. They are for controlling the PVs. The simplest one is the  <LINK widget={widget} to={"/TextEntry"}>Text Entry</LINK>, where
-                    the user directly inputs and set the value. Using  <LINK widget={widget} to={"/ScaledSlider"}>Scaled Slider</LINK>, we can
-                    change the value by sliding or clicking the widget.
+                    Monitor widgets. These widgets are designed to visualize EPICS PV values in a variety of forms.
+                    For example, the <LINK widget={widget} to={"/MonitorWidgets/TextUpdate"}>Text Update</LINK> widget 
+                    displays the current value as text within a rectangular block.
+                    The <LINK widget={widget} to={"/MonitorWidgets/Tank"}>Tank</LINK> widget represents 
+                    the value as the fill level of a water tank, providing an intuitive visual cue.
+                    The <LINK widget={widget} to={"/MonitorWidgets/LED"}>LED</LINK> widget offers a simple way 
+                    to monitor binary or status values, lighting up to indicate changes.
                 </P>
             </li>
             <li>
                 <P>
-                    Complex widgets. They are for complex operations. For example, the <LINK widget={widget} to={"/ActionButton"}>Action Button</LINK> can
-                    do various jobs. We can use it to open another display window, or a web page. We can also execute a command (e.g. shell script)
-                    by clicking it. Using <LINK widget={widget} to={"/DataViewer"}>Data Viewer</LINK>, we can view the time series data for a PV. If TDM is configured
-                    with an Archiver, the archived data can be displayed together with the live ones.
+                    Control widgets. These widgets allow users to interact with and modify PV (Process Variable) values using various graphical controls.
+                    The most basic example is the <LINK widget={widget} to={"/ControlWidgets/TextEntry"}>Text Entry</LINK>, which lets users input and set values directly.
+                    For more intuitive adjustments, the <LINK widget={widget} to={"/ControlWidgets/ScaledSlider"}>Scaled Slider</LINK> enables 
+                    users to change values by dragging a slider.
+                    Control widgets are essential for real-time operation and provide flexible ways to manage process variables within your display.
+                </P>
+            </li>
+            <li>
+                <P>
+                    Complex widgets. These widgets are designed for advanced operations that often involve multiple PVs, displays, or steps of logic.
+                    Complex widgets enable users to implement sophisticated workflows and interactions within TDM.
+                    For example, the <LINK widget={widget} to={"/ComplexWidgets/ActionButton"}>Action Button</LINK> can 
+                    perform a variety of actions, such as opening another display window, launching a web page, or executing a command or 
+                    shell script with a single click.
+                    The <LINK widget={widget} to={"/ComplexWidgets/DataViewer"}>Data Viewer</LINK> allows you to 
+                    visualize time series data for a PV. 
+                    If TDM is configured to be able to connect an Archiver, you can view both live and historical data together for comprehensive analysis.
                 </P>
             </li>
         </ul>
 
         <P>
-            You can use these different types of widgets to build the display window, showing and controlling the device.
+            Creating these widgets follows the same process as described for <code>Text Update</code> and <code>Text Entry</code> above.
+            Each widget's sidebar contains configuration options,
+            including common settings such as position, size, background color, text properties, and alarm settings.
+            Additionally, every widget provides its own specific options, which are detailed in their respective chapters throughout
+            this documentation.
+        </P>
+
+
+        <H2 registry={registry}>Tools</H2>
+
+        <P>
+            TDM provides a variety of tools to enhance the user experience.
+            They are all listed on the main window.
         </P>
 
         <H3 registry={registry}>Post-process data</H3>

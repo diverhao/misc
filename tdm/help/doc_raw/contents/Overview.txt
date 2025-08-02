@@ -48,9 +48,9 @@ const Element = ({ widget, linkPath }: any) => {
         </P>
 
         <P>
-            TDM includes advanced features to enhance flexibility and control. 
-            <LINK widget={widget} to={"/AdvancedTopics/Rules"}> Rules </LINK> and 
-            <LINK widget={widget} to={"/AdvancedTopics/PythonScript"}>Python Script</LINK> allow users to process data and dynamically control widget behavior at runtime. 
+            TDM includes advanced features to enhance flexibility and control.
+            <LINK widget={widget} to={"/AdvancedTopics/Rules"}> Rules </LINK> and
+            <LINK widget={widget} to={"/AdvancedTopics/PythonScript"}>Python Script</LINK> allow users to process data and dynamically control widget behavior at runtime.
             The <LINK widget={widget} to={"/AdvancedTopics/LocalPv"}>Local PV</LINK> feature lets you create local variables for custom data manipulation and workflow optimization.
         </P>
         <P>
@@ -100,13 +100,19 @@ const Element = ({ widget, linkPath }: any) => {
 
         <P>
             This document can be found by clicking the <code>Help</code> button in the TDM software. It is also
-            available <LINK link={"https://diverhao.github.io/misc/tdm/help/HelpWindow.html#/GetStarted"}>online</LINK>.
+            available online at <LINK link={"https://diverhao.github.io/misc/tdm/help/HelpWindow.html"}>https://diverhao.github.io/misc/tdm/help/HelpWindow.html</LINK>.
         </P>
 
         <P>
-            
+            For enhanced support, you can use this documentation with an AI agent such as
+            <LINK link={"https://chatbase.com"}>Chatbase</LINK> to ask questions about TDM.
+            The source material for this documentation is available at
+            <LINK link={"https://github.com/diverhao/misc/tree/main/tdm/help/doc_raw"}>https://github.com/diverhao/misc/tree/main/tdm/help/doc_raw</LINK>.
+            You may upload these raw text files to create an AI agent dedicated for TDM.
+            Below is an example of using Chatbase to interact with TDM documentation:
         </P>
 
+        <IMG width={"50%"} src={"resources/help/tdm-chatbase.gif"}></IMG>
 
         <H2 registry={registry}>Developers</H2>
         <ul>
